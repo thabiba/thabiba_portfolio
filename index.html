@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thabiba's Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #6a11cb, #2575fc);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 20px 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            color: #333;
+            text-align: center;
+        }
+        .section h2 {
+            margin-top: 0;
+            font-size: 2rem;
+        }
+        .projects {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .project {
+            width: 40%;
+            margin: 10px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+        }
+        .button {
+            padding: 10px 15px;
+            background-color: #2575fc;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .button:hover {
+            background-color: #6a11cb;
+        }
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Canvas -->
+    <canvas id="canvas"></canvas>
+
+    <header>
+        <h1>Welcome to Thabiba's Portfolio</h1>
+    </header>
+
+    <section class="section">
+        <h2>About Me</h2>
+        <p>Hi, I'm Thabiba! I specialize in Adobe Photoshop and love working on creative projects such as poster designs, packaging concepts, and typography. Explore my work below!</p>
+    </section>
+
+    <section class="section">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="project">
+                <h3>Poster Design</h3>
+                <p>Engaging social media poster with vibrant visuals and creative typography.</p>
+                <button class="button" onclick="scrollToSection('poster')">View Details</button>
+            </div>
+            <div class="project">
+                <h3>Packaging Design</h3>
+                <p>Minimalist designs for Lays packets and pizza boxes with brand-focused appeal.</p>
+                <button class="button" onclick="scrollToSection('packaging')">View Details</button>
+            </div>
+            <div class="project">
+                <h3>Others</h3>
+                <p>Exploring Tamil fonts in poetry visuals blending culture and creativity.</p>
+                <button class="button" onclick="scrollToSection('typography')">View Details</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="poster" class="section">
+        <h2>Poster Design</h2>
+        <p>Engaging social media poster with vibrant visuals and creative typography.</p>
+        <img src="poster.jpg" alt="Poster Design" style="width:100%; border:1px solid #ddd; border-radius:15px;">
+        <button class="button" onclick="redirectToPage('poster-more-details.html')">View More Designs and Details</button>
+
+    </section>
+
+    <section id="packaging" class="section">
+        <h2>Packaging Design</h2>
+        <p>Minimalist designs for Lays packets and pizza boxes with brand-focused appeal.</p>
+        <img src="pizzabox.jpg" alt="Packaging Design" style="width:100%; border:1px solid #ddd; border-radius:15px;">
+        <button class="button" onclick="redirectToPage('packaging-more-details.html')">View More Designs and Details</button>
+
+    </section>
+
+    <section id="typography" class="section">
+        <h2>Others</h2>
+        <p>Exploring Tamil fonts in poetry visuals blending culture and creativity.</p>
+        <img src="album2.jpg" alt="Typography Exploration" style="width:100%; border:1px solid #ddd; border-radius:15px;">
+        <button class="button" onclick="redirectToPage('other-more-details.html')">View More Designs and Details</button>
+
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="thabibabanu4@gmail.com" target="_blank">thabibabanu4@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/thabiba-banu-m-1a2262287" target="_blank">https://www.linkedin.com/in/thabiba-banu-m-1a2262287</a></p>
+        <p>Phone: +91-9361925007</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Thabiba’s Portfolio</p>
+    </footer>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Canvas Background Animation
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        function drawBackground() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const colors = ['#6a11cb', '#2575fc', '#ffffff'];
+            for (let i = 0; i < 100; i++) {
+                ctx.beginPath();
+                ctx.arc(
+                    Math.random() * canvas.width,
+                    Math.random() * canvas.height,
+                    Math.random() * 50,
+                    0,
+                    Math.PI * 2
+                );
+                ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+                ctx.fill();
+            }
+        }
+       
+      function redirectToPage(pageUrl) {
+        window.location.href = pageUrl;
+      }
+
+
+        drawBackground();
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            drawBackground();
+        });
+    </script>
+</body>
+</html>
